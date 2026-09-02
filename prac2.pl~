@@ -1,0 +1,16 @@
+%facts
+%user define
+user(aditi,action).
+user(sakshi,commedy).
+user(rohini,historical).
+
+%movie database
+movie(war,action).
+movie(phirherapheri,commedy).
+movie(tanhaji,historical).
+
+%rules
+recommended(User,Movie):-
+    user(Movie,Gen),
+    movie(User,Gen).
+
