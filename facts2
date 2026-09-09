@@ -1,0 +1,9 @@
+%facts
+likes(mother,father).
+likes(father,mother).
+likes(son,daughter).
+
+%Rules
+relation(X,Y):-
+ likes(X,Y),
+ likes(Y,X).
