@@ -1,0 +1,22 @@
+% Facts: Routes between cities
+route(vita, sangli).
+route(sangli, pune).
+route(vita, karad).
+route(karad, pune).
+route(pune, mumbai).
+
+% Rule: Find connected cities
+connected(X, Y) :- route(X, Y).
+connected(X, Y) :- route(Y, X).
+
+% DFS algorithm
+dfs(Start, Goal, Path) :-
+    travel(Start, Goal, [Start], RevPath),
+    reverse(RevPath, Path).
+
+travel(Goal, Goal, Visited, Visited).
+
+travel(Current, Goal, Visited, Path) :-
+    connected(Current, Next),
+    \+ member(Next, Visited),
+    travel(Next, Goal, [Next|Visited], Path).
